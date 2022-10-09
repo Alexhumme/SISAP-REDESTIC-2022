@@ -1,0 +1,464 @@
+@font-face{
+    font-family: '8-bits';
+    src: url(fuentes/8bitOperatorPlus8-Regular.ttf);
+}
+@font-face {
+    font-family: 'retro';
+    src: url(fuentes/pixcyr2.ttf);
+}
+@font-face {
+	font-family: "dir";
+	src: url(fuentes/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+@font-face {
+	font-family: "comic sans";
+	src:url(fuentes/ComicSansMS3.ttf);
+}
+body{
+	background-image: url(img/fondo.png);
+	height: auto;
+	font-family: "retro";
+}
+h1 {
+	padding: 10px;
+	margin: auto;
+	position: relative;
+}
+h3{
+	margin: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.flex{
+	display: flex;
+}
+.dir{
+	display: inline-flex;
+	align-items: center;
+}
+.dir img{
+	width: 15px;
+}
+#juego {
+	height: fit-content;
+
+	width: 600px;
+	height: auto;
+	padding: 0px 0px 10px 0px;
+
+	justify-content:space-around;
+	align-items: center;
+	/*background-image: linear-gradient(to bottom,rgb(0, 100, 194),rgb(19, 103, 214), rgb(0, 216, 245),rgb(224, 255, 110));*/
+	background-color: #00000000;
+
+	opacity: 0.9;
+	background: radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #000000 20%, #000000 80%, transparent 80%, transparent) 75px 75px, linear-gradient(#3594ec 6px, transparent 6px) 0 -3px, linear-gradient(90deg, #3594ec 6px, #000000 6px) -3px 0;
+	background-size: 150px 150px, 150px 150px, 75px 75px, 75px 75px;
+	
+	border: solid 1px white;
+	border-radius: 3px;
+	
+	margin: 0px auto 50px ;
+
+
+}
+
+#puntaje,.tiempoC-c{
+	display: flex;
+	align-items: center;
+	color: aliceblue;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	border-radius: 10px;
+}
+.llaves{
+	float: left;
+	font-family: "8-bits";
+	font-size: 150%;
+}
+.niveles {
+    position: relative;
+	width: 100px;
+}
+#nivelesLista {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    z-index: 1;
+}
+
+#nivelesLista button {
+    height: 20px;
+	border-radius: 0px;
+}
+
+#nivelesLista button:hover {background-color: white;}
+.niveles:hover #nivelesLista {display: block;}
+.niveles:hover .nivelesBoton {background-color: grey;}
+
+.mensajea.loc-mando{
+	margin-right: 100px;
+}
+
+.mando button {
+	transform: rotate(-45deg);
+	width: 100px;
+	height: 100px;
+	font-weight: bolder;
+	font-family:"dir";
+	font-size: xx-large;
+	background-color: transparent;
+	opacity: 0.3;
+	color: white;
+	border: none;
+	margin: 10px;
+	transition: 120ms;
+}
+.mando button:active{
+	opacity: 1;
+}
+.B_arriba {
+	background-image: url(img/arrow-up.png);
+	background-size: cover;
+	background-position: center;
+}
+.B_abajo {
+	background-image: url(img/arrow-down.png);
+	background-size: cover;
+	background-position: center;
+}
+.B_derecha {
+	background-image: url(img/arrow-right.png);
+	background-size: cover;
+	background-position: center;
+}
+.B_izquierda {
+	background-image: url(img/arrow-left.png);
+	background-size: cover;
+	background-position: center;
+}
+.mando {
+	position: fixed;
+	transform: rotate(45deg);
+	width: 200px;
+	height: 200px;
+	right: 40px;
+	top: 50%;
+	margin-top: -100px;
+	border-radius: 45px;
+	z-index: 100;
+}
+.mando td{
+	background-color: transparent;
+}
+.menu {
+	background-color: cornsilk;
+	position: relative;
+	/*top: -50px;*/
+	margin-left: 550px;
+	width: 200px;
+	height: 20px;
+	padding: 10px;
+	border-style: groove;
+}
+/* juego */
+#cuadradoRojo {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	z-index: 2;
+	background-position: center;
+	background-size: cover;
+	transition:linear 0.1s;
+	transition-delay: 0.04s;
+	overflow: hidden;
+}
+#robotSign{
+	background-image: url(img/robot-sign.gif);
+	width: 50px;
+	height: 50px;
+	position: relative;
+	z-index: 4;
+	background-position: center;
+	background-size: cover;
+	transition:linear 0.1s;
+
+}
+.container-escenario{
+	height:560px;
+}
+#escenario {
+	width: 550px;
+	height: 550px;
+	position:relative;
+	top: 10px;
+	left: 10px;
+	display: grid;
+	
+
+	background-image: url(img/piso.png);
+}
+/* pruebas */
+#canvas{
+	height: 459px;
+	width: 450px;
+	position: fixed;
+	z-index: 5;
+	margin-left: auto;
+	top: 50%;
+	left: 50%;
+	margin-top: -230px;
+	margin-left: -235px;
+	background-color: rgba(0, 0, 0, 0.719);
+	border: solid 1px white;
+	border-radius: 10px;
+}
+.btn-Ext{
+	display: none;
+	top: 10%;
+	left:50%;
+	margin-left: -250px;
+	margin-top: 20%;
+	border: none;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    font-weight: bolder;
+    font-size: larger;
+    cursor: pointer;
+	position: fixed;
+	z-index: 6;
+	transition: ease-out 0.1s;
+}
+.btn-Ext:hover{
+	background-color: rgb(182, 20, 47);
+	color: aliceblue;
+}
+#principal{
+	
+}
+/* cuadro de dialogo */
+#txts{
+	font-family:"retro";
+
+	width: 100%;
+	height: 120px;
+	margin: 0px 0px;
+	/*background-image: linear-gradient(to left, red,blue);*/background-color: black;
+	color: rgb(255, 255, 255);
+	border-bottom: solid 1px white;
+	align-items: center;
+	display: inline-flex;
+	justify-content:space-around;
+	z-index: 4;
+
+}
+
+#talker-sisap{
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+}
+/* temporizador */
+.tCont{
+	
+	height:500px;
+	width: 20px;
+	background-color: rgb(0, 44, 109);
+	border: solid 3px black;
+	margin-top: 20px;
+	margin-left: 17px;
+	transform: rotate(180deg);
+	border-radius: 20px;
+}
+#tiempoR{
+	background-color: rgb(0, 216, 245);
+	
+	height: 500px;
+	border-radius: 20px ;
+
+}
+.tiempoC-c{
+	font-family: "8-bits";
+	font-size: larger;
+	justify-content: center;
+	width: 40px;
+}
+/* PANELES */
+.panel{
+	transition: 1s;
+}
+#PB{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	margin: auto;
+	/*background-color: blue;*/
+	background-image: url(img/teleportB.png);
+}
+#PA{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	margin: auto;
+	/*background-color: yellow;*/
+	background-image: url(img/teleportA.png);
+}
+.restart {
+	height: 25px;
+}
+.p9{
+	background-color: none;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+}
+.p9::before{
+	content: url(img/cofre-abierto\(6\).png);
+	position: absolute;
+	top: 0px;
+	z-index: 3;
+}
+.p7{
+	background-color: none;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	z-index: 3;
+}
+.p7::before{
+	content: url(img/cofre-cerrado\(1\).png);
+	position: absolute;
+	top: 0px;
+}
+.p7::after{
+	content: url(img/interrogacion_z.gif);
+	position: absolute;
+	top: -25px;
+	z-index: 3;
+}
+.p6{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	border-radius: 90px;
+	margin: auto;
+	background-image: url(img/llave.png);
+	background-size: cover;
+	background-position: center;
+}
+.p8{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	z-index: 3;
+	
+}
+.p8::before{
+	content: url(img/puerta5-a.png);
+	position: absolute;
+	top: -50px;
+}
+.p5{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	z-index: 3;
+}
+.p5::before{
+	content: url(img/puerta3\(1\).png);
+	position: absolute;
+	top: -50px;
+
+}
+
+.p4{
+	background-color: greenyellow;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.p3{
+	background-image: url(img/llave.png);
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	border-radius: 90px;
+	margin: auto; 
+}
+.p2{
+	background-color: blueviolet;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-image: url(img/muerte.png);
+}
+.p1{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-position: 0px -50px;
+	z-index: 2;
+}
+.p1::before{
+	content: url(img/pared.png);
+	position: absolute;
+	top: 0px;
+}
+.p0{
+	background-color: cyan;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-image: url(img/piso.png);
+	z-index: 0;
+}
+@media (max-width:700px) {
+	.menu.ctrl{
+		z-index: 20;
+
+		left: -200px;
+		opacity: 0.5;
+	}
+	main{
+		height: auto;
+	}
+	.mando{
+		opacity: 1;
+	}
+}
+@media (max-height:500px) {
+	.menu.ctrl{
+		z-index: 20;
+
+		left: -200px;
+		opacity: 0.5;
+	}
+	main{
+		height: auto;
+	}
+	.mando{
+		opacity: 1;
+	}
+}
+@media (max-width:400px) {
+	body{
+		background-position: center;
+		background-size: cover;
+		background-repeat: none;
+	}
+}
+/*
+	COSAS PARA HACER:
+	-	PONER EL APARTADO DE TEXTO Y EL "JUEGO" DENTRO DE UN MISMO DIV
+	-	PASAR EL CONTENIDO DE INFORMACION QUE ESTA EN EL MENU A OTRO LUGAR
+	-	HACER DISPLAY NONE AL LOS CONTROLES AMENOS QUE ESTE EN MOVIL
+	-	HACER DISPLAY FIXED A LOS CONTROLES CUANDO ESTE EN MOVIL
+	-	CAMBIAR EL ESTILO DE LOS CONTROLES
+
+
+*/

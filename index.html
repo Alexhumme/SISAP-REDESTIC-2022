@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo-altoSVG.svg" type="image/x-icon">
+    <title>Log In</title>
+</head>
+<body></body>
+    
+    <header>
+        <nav class="cabezote bgC">
+            <a href="index.html"><img class="logo" src="img/logo-sisap02.png" alt="logo"></a>
+            
+            <input type="checkbox" name="" class="desp-menu">
+
+            
+
+            <ul id='menu'>
+                <li><a href="index.html"> Roles</a></li>
+                <li><a href="ayuda.html"> Ayuda</a></li>
+                <li><a href="nosotros.html"> Nosotros</a></li>
+                <li><a href="contacto.php"> Contacto</a></li>
+            </ul>
+        </nav>
+        <nav class="cabezote bgC"><h1 class="subT">ELIGE UN ROL</h1></nav> 
+    </header>
+    <main class="m-rol">
+        
+        <section class="sec-ing">
+            <div class="desc-roles">
+                <div class="desc-rol">
+                    <input type="radio" name="desc-radio" id="desc-asp">
+                    <h2>
+                        UNETE A UNA SALA, JUEGA Y DESCUBRE TU POTENCIAL
+                        PARA LA PROGRAMACION
+                    </h2>
+                </div>
+                <div class="desc-rol">
+                    <input type="radio" name="desc-radio" id="desc-pro">
+                    <h2>
+                        CREA SALAS, ADMINISTRA A TUS ASPIRANTES, LEE SUS 
+                        RESPUESTAS Y ASIGNA PUNTOS
+                    </h2>
+                </div>
+                <div class="desc-rol">
+                    <input type="radio" name="desc-radio" id="desc-adm">
+                    <h2>
+                        ADMINISTRA LAS BASES DE DATOS Y (EN UN FUTURO)
+                        DISEÑA NUEVAS PRUEBAS
+                    </h2>
+                </div>
+            </div>
+            <div class="container-ingreso">
+                <div class="container-lista ">
+                    
+                    <ul class="rol-l">
+                       <li class="rol aspi"><input name="rol" type="radio" class="btn-rol btnEst" onclick="generarFormulario(0)"></li>
+                       <li class="rol prof"><input name="rol" type="radio" class="btn-rol btnPro" onclick="generarFormulario(1)"></li>  
+                       <li class="rol admin"><input name="rol" type="radio" class="btn-rol btnAdm" onclick="generarFormulario(2)"></li>      
+                    </ul>
+                    
+               </div>
+               <ul class="container-forms">
+                    <li>
+                        <form action="aspirante-espera.php" class="container-form asp" method="post">
+                        <div class='campo-form'>
+                            <label class='lblCont'>CODIGO</label>
+                            <input type='text' placeholder='digite condigo de invitacion' name="codigo" required>
+                        </div>
+                        <div class='campo-form'>
+                            <label class='lblCont'>DOCUMENTO</label>
+                            <input type='number' placeholder='digite su documento' name="documento" required>
+                        </div>
+                        
+                        <div><input type='submit' class='btn-form' value="ingresar"><span class='btn-form' onclick="formCont(0)">registrarse</span></div>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="php/ingresar-profesor.php" class="container-form pro" method="post">
+                        <div class='campo-form'>
+                            <label class='lblCont'>CEDULA</label>
+                            <input type='number' placeholder='digite su cedula' name="documento" required>
+                        </div>
+                        <div class='campo-form'>
+                            <label class='lblCont'>CONTRASEÑA</label>
+                            <input type='password' placeholder='digite su contraseña' name="contraseña" required >
+                        </div>
+                        <div><input type='submit' class='btn-form' value="ingresar"></div>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="php/ingresar-admin.php" method="post" class="container-form adm">
+                        <div class='campo-form'>
+                            <label class='lblCont'>CEDULA</label>
+                            <input type='number' name="documento" placeholder='digite su cedula' required>
+                        </div>
+                        <div class='campo-form'>
+                            <label class='lblCont'>CONTRASEÑA</label>
+                            <input type='password' name="contraseña" placeholder='digite su contraseña' required>
+                        </div>
+                        <div><input type='submit' class='btn-form'></div>
+                        </form>
+                    </li>
+                </ul>
+           </div> 
+        </section>
+    </main>
+    <footer class="bgC">
+        <span>
+            todos los derechos reservados.
+            Alex Valdelamar - SENA CIEA - ficha programacion de software 
+            REDESTIC - Riohacha 2022 ©
+        </span>
+    </footer>
+    
+    <div class="mensajec form-sala">
+        <div>
+            <form method="POST" action='php/añadir-aspirante.php' class="container-form">
+
+                <h3 class="subT">REGISTRO</h3>
+                <div><input type='text' name='documento' placeholder='Documento' required></div>
+                <div><input type='text' name='nombres' placeholder='Nombres' required></div>
+                <div><input type='text' name='apellidos' placeholder='Apellidos' required></div>
+                <div><input type='email' name='correo' placeholder='Correo' required></div>
+                <div><input type='text' name='telefono'placeholder='Telefono'></div>
+                <div class="check"><input type='checkbox' name='terminos' placeholder='terminos' required><label for="" class="">Acepto los terminos y condiciones</label></div>
+                
+                <button class="btn-form"> registrarse </button> <span class="btn-form" onclick="formCont(1)"> cancelar </span> 
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/generar-formulario.js"></script>
+    <script src="js/form_cont.js"></script>
+</body>
+</html>
